@@ -39,6 +39,14 @@
             # So it is not restricted to dpv:AcademicResearch
         ] ;
         # TODO: person must be employed by institute, not a student.
+        # odrl:constraint [
+        #     odrl:leftOperand  odrl:assignee ;
+        #     odrl:operator     employed_by ;
+        #     odrl:rightOperand [
+        #         a ResearchInstitute
+        #         location Netherlands (or EER?)
+        #     ] ;
+        # ] ;
         odrl:constraint [
             odrl:leftOperand  odrl:elapsedTime ;
             odrl:operator     odrl:lteq ;
