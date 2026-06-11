@@ -1,0 +1,48 @@
+@prefix dpv: <https://w3id.org/dpv#> .
+@prefix odrl: <http://www.w3.org/ns/odrl/2/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix schema: <http://schema.org/> .
+@prefix tre: <https://w3id.org/tre/v0/vocabulary#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.org/policies/created-access-policy> a odrl:Offer ;
+    schema:name "Dataset access policy" ;
+    schema:version "1.0.0" ;
+    odrl:permission [ odrl:action [ rdf:value tre:analyse ;
+                    odrl:refinement [ odrl:leftOperand odrl:virtualLocation ;
+                            odrl:operator odrl:eq ;
+                            odrl:rightOperand <https://w3id.org/tre/v0/instance/sane/> ] ] ;
+            odrl:assigner <https://example.org/provider> ;
+            odrl:constraint [ odrl:leftOperand odrl:elapsedTime ;
+                    odrl:operator odrl:lteq ;
+                    odrl:rightOperand "P3M"^^xsd:duration ],
+                [ odrl:leftOperand odrl:partOf ;
+                    odrl:operator odrl:eq ;
+                    odrl:rightOperand "https://odissei-data.nl/" ],
+                [ odrl:leftOperand org:role ;
+                    odrl:operator odrl:isAnyOf ;
+                    odrl:rightOperand "employee",
+                        "faculty" ],
+                [ odrl:leftOperand odrl:spatial ;
+                    odrl:operator odrl:isAnyOf ;
+                    odrl:rightOperand "NL" ] ;
+            odrl:duty [ odrl:action odrl:attribute ;
+                    odrl:target <https://example.org/dataset> ],
+                [ odrl:action [ rdf:value tre:declarePurpose ;
+                            odrl:refinement [ odrl:leftOperand odrl:purpose ;
+                                    odrl:operator odrl:eq ;
+                                    odrl:rightOperand dpv:NonCommercialResearch ] ] ],
+                [ odrl:action tre:provideEthicsApproval ],
+                [ odrl:action tre:acceptTerms ;
+                    odrl:target <https://example.org/terms> ],
+                [ odrl:action [ rdf:value tre:explainResearchPurpose ;
+                            odrl:refinement [ odrl:leftOperand schema:wordCount ;
+                                    odrl:operator odrl:lteq ;
+                                    odrl:rightOperand 150 ] ] ] ;
+            odrl:target <https://example.org/dataset> ] ;
+    odrl:profile tre: ;
+    odrl:prohibition [ odrl:action odrl:distribute ;
+            odrl:assigner <https://example.org/provider> ;
+            odrl:target <https://example.org/dataset> ] .
+
