@@ -1,9 +1,11 @@
 @prefix dpv: <https://w3id.org/dpv#> .
+@prefix duodrl: <https://w3id.org/duodrl#> .
+@prefix loc: <https://w3id.org/dpv/loc#> .
 @prefix odrl: <http://www.w3.org/ns/odrl/2/> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix schema: <http://schema.org/> .
-@prefix tre: <https://w3id.org/tre/v0/vocabulary#> .
+@prefix schema: <https://schema.org/> .
+@prefix tre: <https://w3id.org/tre/vocabulary/v0#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <https://example.org/policies/created-access-policy> a odrl:Offer ;
@@ -15,60 +17,63 @@
             odrl:refinement [
                 odrl:leftOperand odrl:virtualLocation ;
                 odrl:operator odrl:eq ;
-                odrl:rightOperand <https://w3id.org/tre/v0/instance/sane/>
+                odrl:rightOperand <https://w3id.org/tre/instance/sane/>
             ]
         ] ;
         odrl:assigner <https://example.org/provider> ;
-        odrl:constraint [
-            odrl:leftOperand odrl:partOf ;
-            odrl:operator odrl:eq ;
-            odrl:rightOperand "https://odissei-data.nl/"
-        ] ;
-        odrl:constraint [
-            odrl:leftOperand odrl:spatial ;
-            odrl:operator odrl:isAnyOf ;
-            odrl:rightOperand "DE", "GB", "NL"
-        ] ;
-        odrl:constraint [
-            odrl:leftOperand odrl:elapsedTime ;
-            odrl:operator odrl:lteq ;
-            odrl:rightOperand "P3M"^^xsd:duration
+        odrl:assignee [
+            a odrl:PartyCollection ;
+            odrl:source <https://odissei-data.nl/> ;
+            odrl:refinement [
+                odrl:leftOperand odrl:spatial ;
+                odrl:operator odrl:isAnyOf ;
+                odrl:rightOperand loc:DE, loc:GB, loc:NL
+            ]
         ] ;
         odrl:constraint [
             odrl:leftOperand org:role ;
             odrl:operator odrl:isAnyOf ;
             odrl:rightOperand "employee", "faculty"
         ] ;
-        odrl:duty [
-            odrl:action [
-                rdf:value tre:declarePurpose ;
-                odrl:refinement [
-                    odrl:leftOperand odrl:purpose ;
-                    odrl:operator odrl:eq ;
-                    odrl:rightOperand dpv:NonCommercialResearch
-                ]
-            ]
-        ] ;
-        odrl:duty [
-            odrl:action tre:acceptTerms ;
-            odrl:target <https://example.org/terms>
-        ] ;
-        odrl:duty [
-            odrl:action tre:provideEthicsApproval
+        odrl:constraint [
+            odrl:leftOperand odrl:elapsedTime ;
+            odrl:operator odrl:lteq ;
+            odrl:rightOperand "P3M"^^xsd:duration
         ] ;
         odrl:duty [
             odrl:action odrl:attribute ;
             odrl:target <https://example.org/dataset>
         ] ;
         odrl:duty [
+            odrl:action duodrl:ProvideEthicalApproval
+        ] ;
+        odrl:constraint [
+            odrl:leftOperand odrl:purpose ;
+            odrl:operator odrl:isA ;
+            odrl:rightOperand dpv:NonCommercialResearch
+        ] ;
+        odrl:duty [
+            odrl:action odrl:obtainConsent ;
+            # odrl:consentingParty ex:Researcher ;
+            odrl:constraint [
+                odrl:leftOperand odrl:event ;
+                odrl:operator odrl:lt ;
+                odrl:rightOperand odrl:policyUsage
+            ]
+        ] ;
+        odrl:duty [
             odrl:action [
-                rdf:value tre:explainResearchPurpose ;
+                rdf:value tre:provideAccessPurpose ;
                 odrl:refinement [
                     odrl:leftOperand schema:wordCount ;
                     odrl:operator odrl:lteq ;
                     odrl:rightOperand 150
                 ]
             ]
+        ] ;
+        odrl:duty [
+            odrl:action tre:acceptTerms ;
+            odrl:target <https://example.org/terms>
         ] ;
         odrl:target <https://example.org/dataset>
     ] ;
