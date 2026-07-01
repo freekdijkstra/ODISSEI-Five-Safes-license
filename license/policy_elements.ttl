@@ -17,8 +17,8 @@
             odrl:refinement [
                 odrl:leftOperand odrl:virtualLocation ;
                 odrl:operator odrl:eq ;
-                odrl:rightOperand <https://w3id.org/tre/instance/sane/>
-            ]
+                odrl:rightOperand <https://w3id.org/tre/instance/sane/> ;
+            ] ;
         ] ;
         odrl:assigner <https://example.org/provider> ;
         odrl:assignee [
@@ -27,59 +27,59 @@
             odrl:refinement [
                 odrl:leftOperand odrl:spatial ;
                 odrl:operator odrl:isAnyOf ;
-                odrl:rightOperand loc:DE, loc:GB, loc:NL
-            ]
-        ] ;
-        odrl:constraint [
-            odrl:leftOperand org:role ;
-            odrl:operator odrl:isAnyOf ;
-            odrl:rightOperand "employee", "faculty"
+                odrl:rightOperand loc:NL ;
+            ] ;
+            odrl:refinement [
+                odrl:leftOperand org:role ;
+                odrl:operator odrl:isAnyOf ;
+                odrl:rightOperand "employee" , "faculty" ;
+            ] ;
         ] ;
         odrl:constraint [
             odrl:leftOperand odrl:elapsedTime ;
             odrl:operator odrl:lteq ;
-            odrl:rightOperand "P3M"^^xsd:duration
+            odrl:rightOperand "P3M"^^xsd:duration ;
         ] ;
         odrl:duty [
             odrl:action odrl:attribute ;
-            odrl:target <https://example.org/dataset>
+            odrl:target <https://example.org/dataset> ;
         ] ;
         odrl:duty [
-            odrl:action duodrl:ProvideEthicalApproval
-        ] ;
-        odrl:constraint [
-            odrl:leftOperand odrl:purpose ;
-            odrl:operator odrl:isA ;
-            odrl:rightOperand dpv:NonCommercialResearch
+            odrl:action duodrl:ProvideEthicalApproval ;
         ] ;
         odrl:duty [
-            odrl:action odrl:obtainConsent ;
-            # odrl:consentingParty ex:Researcher ;
-            odrl:constraint [
-                odrl:leftOperand odrl:event ;
-                odrl:operator odrl:lt ;
-                odrl:rightOperand odrl:policyUsage
-            ]
+            odrl:action [
+                rdf:value tre:declareIntendedPurpose ;
+                odrl:refinement [
+                    odrl:leftOperand odrl:purpose ;
+                    odrl:operator odrl:isAnyOf ;
+                    odrl:rightOperand dpv:NonCommercialResearch ;
+                ] ;
+            ] ;
         ] ;
         odrl:duty [
             odrl:action [
                 rdf:value tre:provideAccessPurpose ;
                 odrl:refinement [
                     odrl:leftOperand schema:wordCount ;
+                    odrl:operator odrl:gteq ;
+                    odrl:rightOperand 10 ;
+                ] , [
+                    odrl:leftOperand schema:wordCount ;
                     odrl:operator odrl:lteq ;
-                    odrl:rightOperand 150
-                ]
-            ]
+                    odrl:rightOperand 150 ;
+                ] ;
+            ] ;
         ] ;
         odrl:duty [
             odrl:action tre:acceptTerms ;
-            odrl:target <https://example.org/terms>
+            odrl:target <https://example.org/terms> ;
         ] ;
-        odrl:target <https://example.org/dataset>
+        odrl:target <https://example.org/dataset> ;
     ] ;
     odrl:profile tre: ;
     odrl:prohibition [
         odrl:action odrl:distribute ;
         odrl:assigner <https://example.org/provider> ;
-        odrl:target <https://example.org/dataset>
+        odrl:target <https://example.org/dataset> ;
     ] .
