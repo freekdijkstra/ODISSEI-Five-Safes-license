@@ -2,7 +2,9 @@
 
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix dct: <http://purl.org/dc/terms/> .
+@prefix tre: <https://w3id.org/tre/vocabulary/v0#> .
 
 <https://w3id.org/tre/instance/sane#SANE>
+    a tre:TRE ;
     rdfs:label "SANE" ;
     dct:description "SURF Secure Analysis Environment" .

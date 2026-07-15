@@ -1,14 +1,100 @@
 @base <https://w3id.org/tre/vocabulary/v0#> .
 
+@prefix tre: <https://w3id.org/tre/vocabulary/v0#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dpv: <https://w3id.org/dpv#> .
+@prefix duodrl: <https://w3id.org/duodrl#> .
 @prefix odrl: <http://www.w3.org/ns/odrl/2/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix dct: <http://purl.org/dc/terms/> .
+@prefix schema: <https://schema.org/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix tech: <https://w3id.org/dpv/tech#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://w3id.org/tre/vocabulary/v0#>
-    a odrl:Profile .
+tre:
+    a owl:Ontology ;
+    rdfs:label "TRE Vocabulary"@en ;
+    owl:versionInfo "0.5" ;
+    dct:creator "Freek Dijkstra" ;
+    dct:created "2026-07-15"^^xsd:date .
 
-<analyse>
+# This defines this URI as a ODRL Profile
+tre:
+    a skos:Collection ;
+    skos:member
+        tre:TRE ,
+        tre:analyse ,
+        tre:declareIntendedPurpose ,
+        tre:provideAccessPurpose ,
+        tre:acceptTerms ,
+        <urn:oid:1.3.6.1.4.1.5923.1.1.1.1> ,
+        dpv:CommercialResearch ,
+        dpv:NonCommercialResearch ,
+        duodrl:ProvideEthicalApproval ,
+        schema:wordCount .
+
+# Concept of a Trusted Research Environment
+
+tre:TRE
+    a rdfs:Class ;
+    rdfs:isDefinedBy tre: ;
+    rdfs:subClassOf tech:Platform ;
+    rdfs:label  "Trusted Research Environment" ;
+    skos:altLabel  "Secure Processing Environment" ;
+    rdfs:comment  "A controlled compute environment in which permitted analyses on a dataset may be performed, without the data leaving the environment." ;
+    skos:scopeNote  "Instances of TRE are intended to be used as the odrl:rightOperand of a Constraint whose odrl:leftOperand is odrl:virtualLocation." ;
+    schema:potentialAction tre:analyse .
+
+# A TRE facilitates the <analyse> action, but the odrl:distribute action is impossible.
+[]  a owl:NegativePropertyAssertion ;
+    owl:sourceIndividual tre:TRE ;
+    owl:assertionProperty schema:potentialAction ;
+    owl:targetIndividual odrl:distribute .
+
+# Actions that may or must be performed by a odrl:assignee
+
+tre:analyse
     a odrl:Action ;
-    rdfs:subClassOf odrl:grantUse ;
-    rdfs:label  "Run an analysis on a dataset" .
+    rdfs:isDefinedBy tre: ;
+    odrl:includedIn odrl:grantUse ;
+    rdfs:label  "Run an analysis on a dataset" ;
+    rdfs:comment  "The permission of running an analysis on a dataset. Specialisation of odrl:grantUse." ;
+    skos:scopeNote  "Intended to use as a Permission" .
+
+tre:declareIntendedPurpose
+    a odrl:Action ;
+    rdfs:isDefinedBy tre: ;
+    odrl:includedIn odrl:inform ;
+    rdfs:label  "Declare intended purpose" ;
+    rdfs:comment  "The duty to declare the intended purpose of access. Specialisation of odrl:inform." ;
+    skos:scopeNote  "Intended to use as a Duty" .
+
+tre:provideAccessPurpose
+    a odrl:Action ;
+    rdfs:isDefinedBy tre: ;
+    odrl:includedIn odrl:inform ;
+    rdfs:label  "Provide access purpose" ;
+    rdfs:comment  "The duty to provide a description of the purpose for which access is requested. Specialisation of odrl:inform." ;
+    skos:scopeNote  "Intended to use as a Duty" .
+
+tre:acceptTerms
+    a odrl:Action ;
+    rdfs:isDefinedBy tre: ;
+    odrl:includedIn odrl:obtainConsent ;
+    rdfs:label  "Accept terms of use" ;
+    rdfs:comment  "The duty to accept the terms of use. Specialisation of odrl:obtainConsent." ;
+    skos:scopeNote  "Intended to use as a Duty" .
+
+# Left Operands for constraints
+
+<urn:oid:1.3.6.1.4.1.5923.1.1.1.1>
+    a odrl:LeftOperand ;
+    rdfs:isDefinedBy <https://software.internet2.edu/eduperson/internet2-mace-dir-eduperson-201602.html#eduPersonAffiliation> ,
+        tre: ;
+    rdfs:label "eduPersonAffiliation" ;
+    rdfs:comment "Internet2/REFEDS eduPersonAffiliation attribute. Permissible values are strings (e.g. employee, faculty) since no individual URIs are defined." ;
+    skos:scopeNote "Intended to use as a LeftOperand in a refinement of the odrl:assignee." ;
+    skos:broader org:Role .
