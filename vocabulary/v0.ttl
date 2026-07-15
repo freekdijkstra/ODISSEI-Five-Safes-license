@@ -18,8 +18,14 @@ tre:
     a owl:Ontology ;
     rdfs:label "TRE Vocabulary"@en ;
     owl:versionInfo "0.5" ;
-    dct:creator "Freek Dijkstra" ;
-    dct:created "2026-07-15"^^xsd:date .
+    dct:creator <https://surf.nl> , <https://odissei-data.nl> ;
+    dct:contributor "Freek Dijkstra" ;
+    dct:created "2026-07-15"^^xsd:date ;
+    dct:hasFormat 
+        <https://w3id.org/tre/vocabulary/v0.ttl> ,
+        <https://w3id.org/tre/vocabulary/v0.jsonld> ,
+        <https://w3id.org/tre/vocabulary/v0.rdf> ,
+        <https://w3id.org/tre/vocabulary/v0.md> .
 
 # This defines this URI as a ODRL Profile
 tre:

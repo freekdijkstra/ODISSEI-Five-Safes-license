@@ -1,0 +1,302 @@
+[
+  {
+    "@id": "https://w3id.org/tre/vocabulary/v0#acceptTerms",
+    "@type": [
+      "http://www.w3.org/ns/odrl/2/Action"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The duty to accept the terms of use. Specialisation of odrl:obtainConsent."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "https://w3id.org/tre/vocabulary/v0#"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "Accept terms of use"
+      }
+    ],
+    "http://www.w3.org/2004/02/skos/core#scopeNote": [
+      {
+        "@value": "Intended to use as a Duty"
+      }
+    ],
+    "http://www.w3.org/ns/odrl/2/includedIn": [
+      {
+        "@id": "http://www.w3.org/ns/odrl/2/obtainConsent"
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/tre/vocabulary/v0#TRE",
+    "@type": [
+      "http://www.w3.org/2000/01/rdf-schema#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "A controlled compute environment in which permitted analyses on a dataset may be performed, without the data leaving the environment."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "https://w3id.org/tre/vocabulary/v0#"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "Trusted Research Environment"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "https://w3id.org/dpv/tech#Platform"
+      }
+    ],
+    "http://www.w3.org/2004/02/skos/core#altLabel": [
+      {
+        "@value": "Secure Processing Environment"
+      }
+    ],
+    "http://www.w3.org/2004/02/skos/core#scopeNote": [
+      {
+        "@value": "Instances of TRE are intended to be used as the odrl:rightOperand of a Constraint whose odrl:leftOperand is odrl:virtualLocation."
+      }
+    ],
+    "https://schema.org/potentialAction": [
+      {
+        "@id": "https://w3id.org/tre/vocabulary/v0#analyse"
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/tre/vocabulary/v0#analyse",
+    "@type": [
+      "http://www.w3.org/ns/odrl/2/Action"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The permission of running an analysis on a dataset. Specialisation of odrl:grantUse."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "https://w3id.org/tre/vocabulary/v0#"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "Run an analysis on a dataset"
+      }
+    ],
+    "http://www.w3.org/2004/02/skos/core#scopeNote": [
+      {
+        "@value": "Intended to use as a Permission"
+      }
+    ],
+    "http://www.w3.org/ns/odrl/2/includedIn": [
+      {
+        "@id": "http://www.w3.org/ns/odrl/2/grantUse"
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/tre/vocabulary/v0#provideAccessPurpose",
+    "@type": [
+      "http://www.w3.org/ns/odrl/2/Action"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The duty to provide a description of the purpose for which access is requested. Specialisation of odrl:inform."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "https://w3id.org/tre/vocabulary/v0#"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "Provide access purpose"
+      }
+    ],
+    "http://www.w3.org/2004/02/skos/core#scopeNote": [
+      {
+        "@value": "Intended to use as a Duty"
+      }
+    ],
+    "http://www.w3.org/ns/odrl/2/includedIn": [
+      {
+        "@id": "http://www.w3.org/ns/odrl/2/inform"
+      }
+    ]
+  },
+  {
+    "@id": "urn:oid:1.3.6.1.4.1.5923.1.1.1.1",
+    "@type": [
+      "http://www.w3.org/ns/odrl/2/LeftOperand"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "Internet2/REFEDS eduPersonAffiliation attribute. Permissible values are strings (e.g. employee, faculty) since no individual URIs are defined."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "https://software.internet2.edu/eduperson/internet2-mace-dir-eduperson-201602.html#eduPersonAffiliation"
+      },
+      {
+        "@id": "https://w3id.org/tre/vocabulary/v0#"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "eduPersonAffiliation"
+      }
+    ],
+    "http://www.w3.org/2004/02/skos/core#broader": [
+      {
+        "@id": "http://www.w3.org/ns/org#Role"
+      }
+    ],
+    "http://www.w3.org/2004/02/skos/core#scopeNote": [
+      {
+        "@value": "Intended to use as a LeftOperand in a refinement of the odrl:assignee."
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/tre/vocabulary/v0#declareIntendedPurpose",
+    "@type": [
+      "http://www.w3.org/ns/odrl/2/Action"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The duty to declare the intended purpose of access. Specialisation of odrl:inform."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "https://w3id.org/tre/vocabulary/v0#"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "Declare intended purpose"
+      }
+    ],
+    "http://www.w3.org/2004/02/skos/core#scopeNote": [
+      {
+        "@value": "Intended to use as a Duty"
+      }
+    ],
+    "http://www.w3.org/ns/odrl/2/includedIn": [
+      {
+        "@id": "http://www.w3.org/ns/odrl/2/inform"
+      }
+    ]
+  },
+  {
+    "@id": "_:n137eaa02aa1d488297989f1975b55148b1",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#NegativePropertyAssertion"
+    ],
+    "http://www.w3.org/2002/07/owl#assertionProperty": [
+      {
+        "@id": "https://schema.org/potentialAction"
+      }
+    ],
+    "http://www.w3.org/2002/07/owl#sourceIndividual": [
+      {
+        "@id": "https://w3id.org/tre/vocabulary/v0#TRE"
+      }
+    ],
+    "http://www.w3.org/2002/07/owl#targetIndividual": [
+      {
+        "@id": "http://www.w3.org/ns/odrl/2/distribute"
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/tre/vocabulary/v0#",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Ontology",
+      "http://www.w3.org/2004/02/skos/core#Collection"
+    ],
+    "http://purl.org/dc/terms/contributor": [
+      {
+        "@value": "Freek Dijkstra"
+      }
+    ],
+    "http://purl.org/dc/terms/created": [
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#date",
+        "@value": "2026-07-15"
+      }
+    ],
+    "http://purl.org/dc/terms/creator": [
+      {
+        "@id": "https://surf.nl"
+      },
+      {
+        "@id": "https://odissei-data.nl"
+      }
+    ],
+    "http://purl.org/dc/terms/hasFormat": [
+      {
+        "@id": "https://w3id.org/tre/vocabulary/v0.jsonld"
+      },
+      {
+        "@id": "https://w3id.org/tre/vocabulary/v0.rdf"
+      },
+      {
+        "@id": "https://w3id.org/tre/vocabulary/v0.md"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "TRE Vocabulary"
+      }
+    ],
+    "http://www.w3.org/2002/07/owl#versionInfo": [
+      {
+        "@value": "0.5"
+      }
+    ],
+    "http://www.w3.org/2004/02/skos/core#member": [
+      {
+        "@id": "https://w3id.org/tre/vocabulary/v0#TRE"
+      },
+      {
+        "@id": "https://w3id.org/tre/vocabulary/v0#analyse"
+      },
+      {
+        "@id": "https://w3id.org/tre/vocabulary/v0#declareIntendedPurpose"
+      },
+      {
+        "@id": "https://w3id.org/tre/vocabulary/v0#provideAccessPurpose"
+      },
+      {
+        "@id": "https://w3id.org/tre/vocabulary/v0#acceptTerms"
+      },
+      {
+        "@id": "urn:oid:1.3.6.1.4.1.5923.1.1.1.1"
+      },
+      {
+        "@id": "https://w3id.org/dpv#CommercialResearch"
+      },
+      {
+        "@id": "https://w3id.org/dpv#NonCommercialResearch"
+      },
+      {
+        "@id": "https://w3id.org/duodrl#ProvideEthicalApproval"
+      },
+      {
+        "@id": "https://schema.org/wordCount"
+      }
+    ]
+  }
+]

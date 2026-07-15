@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:odrl="http://www.w3.org/ns/odrl/2/"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:dct="http://purl.org/dc/terms/"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:schema="https://schema.org/"
+>
+  <owl:NegativePropertyAssertion rdf:nodeID="n137eaa02aa1d488297989f1975b55148b1">
+    <owl:sourceIndividual rdf:resource="https://w3id.org/tre/vocabulary/v0#TRE"/>
+    <owl:assertionProperty rdf:resource="https://schema.org/potentialAction"/>
+    <owl:targetIndividual rdf:resource="http://www.w3.org/ns/odrl/2/distribute"/>
+  </owl:NegativePropertyAssertion>
+  <rdfs:Class rdf:about="https://w3id.org/tre/vocabulary/v0#TRE">
+    <rdfs:isDefinedBy>
+      <owl:Ontology rdf:about="https://w3id.org/tre/vocabulary/v0#">
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Collection"/>
+        <rdfs:label xml:lang="en">TRE Vocabulary</rdfs:label>
+        <owl:versionInfo>0.5</owl:versionInfo>
+        <dct:creator rdf:resource="https://surf.nl"/>
+        <dct:creator rdf:resource="https://odissei-data.nl"/>
+        <dct:contributor>Freek Dijkstra</dct:contributor>
+        <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-07-15</dct:created>
+        <dct:hasFormat rdf:resource="https://w3id.org/tre/vocabulary/v0.jsonld"/>
+        <dct:hasFormat rdf:resource="https://w3id.org/tre/vocabulary/v0.rdf"/>
+        <dct:hasFormat rdf:resource="https://w3id.org/tre/vocabulary/v0.md"/>
+        <skos:member rdf:resource="https://w3id.org/tre/vocabulary/v0#TRE"/>
+        <skos:member rdf:resource="https://w3id.org/tre/vocabulary/v0#analyse"/>
+        <skos:member rdf:resource="https://w3id.org/tre/vocabulary/v0#declareIntendedPurpose"/>
+        <skos:member rdf:resource="https://w3id.org/tre/vocabulary/v0#provideAccessPurpose"/>
+        <skos:member rdf:resource="https://w3id.org/tre/vocabulary/v0#acceptTerms"/>
+        <skos:member rdf:resource="urn:oid:1.3.6.1.4.1.5923.1.1.1.1"/>
+        <skos:member rdf:resource="https://w3id.org/dpv#CommercialResearch"/>
+        <skos:member rdf:resource="https://w3id.org/dpv#NonCommercialResearch"/>
+        <skos:member rdf:resource="https://w3id.org/duodrl#ProvideEthicalApproval"/>
+        <skos:member rdf:resource="https://schema.org/wordCount"/>
+      </owl:Ontology>
+    </rdfs:isDefinedBy>
+    <rdfs:subClassOf rdf:resource="https://w3id.org/dpv/tech#Platform"/>
+    <rdfs:label>Trusted Research Environment</rdfs:label>
+    <skos:altLabel>Secure Processing Environment</skos:altLabel>
+    <rdfs:comment>A controlled compute environment in which permitted analyses on a dataset may be performed, without the data leaving the environment.</rdfs:comment>
+    <skos:scopeNote>Instances of TRE are intended to be used as the odrl:rightOperand of a Constraint whose odrl:leftOperand is odrl:virtualLocation.</skos:scopeNote>
+    <schema:potentialAction>
+      <odrl:Action rdf:about="https://w3id.org/tre/vocabulary/v0#analyse">
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/tre/vocabulary/v0#"/>
+        <odrl:includedIn rdf:resource="http://www.w3.org/ns/odrl/2/grantUse"/>
+        <rdfs:label>Run an analysis on a dataset</rdfs:label>
+        <rdfs:comment>The permission of running an analysis on a dataset. Specialisation of odrl:grantUse.</rdfs:comment>
+        <skos:scopeNote>Intended to use as a Permission</skos:scopeNote>
+      </odrl:Action>
+    </schema:potentialAction>
+  </rdfs:Class>
+  <odrl:Action rdf:about="https://w3id.org/tre/vocabulary/v0#provideAccessPurpose">
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/tre/vocabulary/v0#"/>
+    <odrl:includedIn rdf:resource="http://www.w3.org/ns/odrl/2/inform"/>
+    <rdfs:label>Provide access purpose</rdfs:label>
+    <rdfs:comment>The duty to provide a description of the purpose for which access is requested. Specialisation of odrl:inform.</rdfs:comment>
+    <skos:scopeNote>Intended to use as a Duty</skos:scopeNote>
+  </odrl:Action>
+  <odrl:LeftOperand rdf:about="urn:oid:1.3.6.1.4.1.5923.1.1.1.1">
+    <rdfs:isDefinedBy rdf:resource="https://software.internet2.edu/eduperson/internet2-mace-dir-eduperson-201602.html#eduPersonAffiliation"/>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/tre/vocabulary/v0#"/>
+    <rdfs:label>eduPersonAffiliation</rdfs:label>
+    <rdfs:comment>Internet2/REFEDS eduPersonAffiliation attribute. Permissible values are strings (e.g. employee, faculty) since no individual URIs are defined.</rdfs:comment>
+    <skos:scopeNote>Intended to use as a LeftOperand in a refinement of the odrl:assignee.</skos:scopeNote>
+    <skos:broader rdf:resource="http://www.w3.org/ns/org#Role"/>
+  </odrl:LeftOperand>
+  <odrl:Action rdf:about="https://w3id.org/tre/vocabulary/v0#declareIntendedPurpose">
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/tre/vocabulary/v0#"/>
+    <odrl:includedIn rdf:resource="http://www.w3.org/ns/odrl/2/inform"/>
+    <rdfs:label>Declare intended purpose</rdfs:label>
+    <rdfs:comment>The duty to declare the intended purpose of access. Specialisation of odrl:inform.</rdfs:comment>
+    <skos:scopeNote>Intended to use as a Duty</skos:scopeNote>
+  </odrl:Action>
+  <odrl:Action rdf:about="https://w3id.org/tre/vocabulary/v0#acceptTerms">
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/tre/vocabulary/v0#"/>
+    <odrl:includedIn rdf:resource="http://www.w3.org/ns/odrl/2/obtainConsent"/>
+    <rdfs:label>Accept terms of use</rdfs:label>
+    <rdfs:comment>The duty to accept the terms of use. Specialisation of odrl:obtainConsent.</rdfs:comment>
+    <skos:scopeNote>Intended to use as a Duty</skos:scopeNote>
+  </odrl:Action>
+</rdf:RDF>
