@@ -1,61 +1,74 @@
-@base <https://w3id.org/tre/vocabulary/v0#> .
+@base <https://w3id.org/tre/vocabulary/v0> .
 
 @prefix tre: <https://w3id.org/tre/vocabulary/v0#> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix dpv: <https://w3id.org/dpv#> .
 @prefix duodrl: <https://w3id.org/duodrl#> .
 @prefix odrl: <http://www.w3.org/ns/odrl/2/> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
-@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix schema: <https://schema.org/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix tech: <https://w3id.org/dpv/tech#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-tre:
+# The IRI does not contain the hash; the tre:/v0# namespace does.
+<https://w3id.org/tre/vocabulary/v0>
     a owl:Ontology ;
     rdfs:label "TRE Vocabulary"@en ;
+    dct:description "An ODRL Profile that defines the terms needed to write access policies for Trusted Research Environments (TREs), such as the ODISSEI Five Safes License."@en ;
     owl:versionInfo "0.5" ;
+    owl:versionIRI <https://w3id.org/tre/vocabulary/v0> ;
+    dct:license <https://creativecommons.org/licenses/by/4.0/> ;
     dct:creator <https://surf.nl> , <https://odissei-data.nl> ;
     dct:contributor "Freek Dijkstra" ;
-    dct:created "2026-07-15"^^xsd:date ;
-    dct:hasFormat 
+    dct:created "2026-02-25"^^xsd:date ;
+    dct:modified "2026-07-17"^^xsd:date ;
+    dct:hasFormat
         <https://w3id.org/tre/vocabulary/v0.ttl> ,
         <https://w3id.org/tre/vocabulary/v0.jsonld> ,
         <https://w3id.org/tre/vocabulary/v0.rdf> ,
         <https://w3id.org/tre/vocabulary/v0.md> .
 
-# This defines this URI as a ODRL Profile
-tre:
-    a skos:Collection ;
-    skos:member
-        tre:TRE ,
-        tre:analyse ,
-        tre:declareIntendedPurpose ,
-        tre:provideAccessPurpose ,
-        tre:acceptTerms ,
+# This defines this IRI as an ODRL Profile
+# Parsers of this profile are supposed to understand
+# the terms defined in this document, as well as a
+# few third-party terms.
+<https://w3id.org/tre/vocabulary/v0>
+    dct:requires
         <urn:oid:1.3.6.1.4.1.5923.1.1.1.1> ,
         dpv:CommercialResearch ,
         dpv:NonCommercialResearch ,
-        duodrl:ProvideEthicalApproval ,
-        schema:wordCount .
+        duodrl:ProvideEthicalApproval .
+
+# A service that offers a Trusted Research Environment
+
+tre:TREService
+    a rdfs:Class, skos:Concept ;
+    rdfs:isDefinedBy <https://w3id.org/tre/vocabulary/v0> ;
+    rdfs:subClassOf dcat:DataService, schema:Service ;
+    rdfs:label "TRE Service" ;
+    skos:definition "A Service that provides a trusted research environment (TRE)."@en ;
+    skos:scopeNote "Not directly used in ODRL constraints. Use tre:TRE instead."@en ;
+    schema:serviceOutput tre:TRE .
 
 # Concept of a Trusted Research Environment
 
 tre:TRE
-    a rdfs:Class ;
-    rdfs:isDefinedBy tre: ;
-    rdfs:subClassOf tech:Platform ;
-    rdfs:label  "Trusted Research Environment" ;
-    skos:altLabel  "Secure Processing Environment" ;
-    rdfs:comment  "A controlled compute environment in which permitted analyses on a dataset may be performed, without the data leaving the environment." ;
-    skos:scopeNote  "Instances of TRE are intended to be used as the odrl:rightOperand of a Constraint whose odrl:leftOperand is odrl:virtualLocation." ;
+    a rdfs:Class, skos:Concept ;
+    rdfs:isDefinedBy <https://w3id.org/tre/vocabulary/v0> ;
+    rdfs:subClassOf tech:Platform, dpv:InformationFlowControl ;
+    rdfs:label "Trusted Research Environment" ;
+    skos:altLabel "Secure Processing Environment" ;
+    skos:definition "A controlled compute environment in which permitted analyses on a dataset may be performed, without the data leaving the environment."@en ;
+    skos:scopeNote "Instances of TRE are intended to be used as the odrl:rightOperand of a Constraint whose odrl:leftOperand is odrl:virtualLocation."@en ;
     schema:potentialAction tre:analyse .
 
-# A TRE facilitates the <analyse> action, but the odrl:distribute action is impossible.
-[]  a owl:NegativePropertyAssertion ;
+_:tre-no-distribute
+    rdfs:comment "The odrl:distribute action is impossible in a TRE"@en ;
+    a owl:NegativePropertyAssertion ;
     owl:sourceIndividual tre:TRE ;
     owl:assertionProperty schema:potentialAction ;
     owl:targetIndividual odrl:distribute .
@@ -63,44 +76,45 @@ tre:TRE
 # Actions that may or must be performed by a odrl:assignee
 
 tre:analyse
-    a odrl:Action ;
-    rdfs:isDefinedBy tre: ;
+    a odrl:Action, skos:Concept ;
+    rdfs:isDefinedBy <https://w3id.org/tre/vocabulary/v0> ;
     odrl:includedIn odrl:grantUse ;
-    rdfs:label  "Run an analysis on a dataset" ;
-    rdfs:comment  "The permission of running an analysis on a dataset. Specialisation of odrl:grantUse." ;
-    skos:scopeNote  "Intended to use as a Permission" .
+    rdfs:label "Run an analysis on a dataset"@en ;
+    skos:definition "The permission of running an analysis on a dataset. Specialisation of odrl:grantUse."@en ;
+    skos:scopeNote "Intended to use as a Permission"@en .
 
 tre:declareIntendedPurpose
-    a odrl:Action ;
-    rdfs:isDefinedBy tre: ;
+    a odrl:Action, skos:Concept ;
+    rdfs:isDefinedBy <https://w3id.org/tre/vocabulary/v0> ;
     odrl:includedIn odrl:inform ;
-    rdfs:label  "Declare intended purpose" ;
-    rdfs:comment  "The duty to declare the intended purpose of access. Specialisation of odrl:inform." ;
-    skos:scopeNote  "Intended to use as a Duty" .
+    rdfs:label "Declare intended purpose" ;
+    skos:definition "The duty to declare the intended purpose of access. Specialisation of odrl:inform."@en ;
+    skos:scopeNote "Intended to use as a Duty"@en .
 
 tre:provideAccessPurpose
-    a odrl:Action ;
-    rdfs:isDefinedBy tre: ;
+    a odrl:Action, skos:Concept ;
+    rdfs:isDefinedBy <https://w3id.org/tre/vocabulary/v0> ;
     odrl:includedIn odrl:inform ;
-    rdfs:label  "Provide access purpose" ;
-    rdfs:comment  "The duty to provide a description of the purpose for which access is requested. Specialisation of odrl:inform." ;
-    skos:scopeNote  "Intended to use as a Duty" .
+    rdfs:label "Provide access purpose" ;
+    skos:definition "The duty to provide a description of the purpose for which access is requested. Specialisation of odrl:inform."@en ;
+    skos:scopeNote "Intended to use as a Duty"@en .
 
 tre:acceptTerms
-    a odrl:Action ;
-    rdfs:isDefinedBy tre: ;
+    a odrl:Action, skos:Concept ;
+    rdfs:isDefinedBy <https://w3id.org/tre/vocabulary/v0> ;
     odrl:includedIn odrl:obtainConsent ;
-    rdfs:label  "Accept terms of use" ;
-    rdfs:comment  "The duty to accept the terms of use. Specialisation of odrl:obtainConsent." ;
-    skos:scopeNote  "Intended to use as a Duty" .
+    rdfs:label "Accept terms of use" ;
+    skos:definition "The duty to accept the terms of use. Specialisation of odrl:obtainConsent."@en ;
+    skos:scopeNote "Intended to use as a Duty"@en .
 
 # Left Operands for constraints
 
 <urn:oid:1.3.6.1.4.1.5923.1.1.1.1>
-    a odrl:LeftOperand ;
+    a odrl:LeftOperand, skos:Concept ;
     rdfs:isDefinedBy <https://software.internet2.edu/eduperson/internet2-mace-dir-eduperson-201602.html#eduPersonAffiliation> ,
-        tre: ;
+        <https://w3id.org/tre/vocabulary/v0> ;
     rdfs:label "eduPersonAffiliation" ;
-    rdfs:comment "Internet2/REFEDS eduPersonAffiliation attribute. Permissible values are strings (e.g. employee, faculty) since no individual URIs are defined." ;
-    skos:scopeNote "Intended to use as a LeftOperand in a refinement of the odrl:assignee." ;
+    skos:definition "Specifies the person's relationship(s) to the institution in broad categories. Permissible values are: faculty, student, staff, alum, member, affiliate, employee, library-walk-in."@en ;
+    skos:scopeNote "Intended to use as a LeftOperand in a refinement of the odrl:assignee."@en ;
+    skos:editorialNote "EduPersonAffiliation is defined in the specification as an SAML/LDAP attribute. It is replicated in this vocabulary so it can be used in a semantic web context."@en ;
     skos:broader org:Role .
