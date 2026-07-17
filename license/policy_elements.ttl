@@ -10,76 +10,101 @@
 <https://example.org/policies/created-access-policy> a odrl:Offer ;
     schema:name "Dataset access policy" ;
     schema:version "1.0.0" ;
+    odrl:profile <https://w3id.org/tre/vocabulary/v0> ;
     odrl:permission [
-        odrl:action [
-            rdf:value tre:analyse ;
-            odrl:refinement [
-                odrl:leftOperand odrl:virtualLocation ;
-                odrl:operator odrl:eq ;
-                odrl:rightOperand <https://w3id.org/tre/instance/sane#SANE> ;
-            ] ;
-        ] ;
+        odrl:action _:action-analyse-in-sane ;
         odrl:assigner <https://example.org/provider> ;
-        odrl:assignee [
-            a odrl:PartyCollection ;
-            odrl:source <https://odissei-data.nl/> ;
-            odrl:refinement [
-                odrl:leftOperand odrl:spatial ;
-                odrl:operator odrl:isAnyOf ;
-                odrl:rightOperand loc:NL ;
-            ] ;
-            odrl:refinement [
-                odrl:leftOperand <urn:oid:1.3.6.1.4.1.5923.1.1.1.1> ;
-                odrl:operator odrl:isAnyOf ;
-                odrl:rightOperand "employee" ,
-                    "faculty" ;
-            ] ;
-        ] ;
-        odrl:constraint [
-            odrl:leftOperand odrl:elapsedTime ;
-            odrl:operator odrl:lteq ;
-            odrl:rightOperand "P3M"^^xsd:duration ;
-        ] ;
-        odrl:duty [
-            odrl:action odrl:attribute ;
-            odrl:target <https://example.org/dataset> ;
-        ] ;
-        odrl:duty [
-            odrl:action duodrl:ProvideEthicalApproval ;
-        ] ;
-        odrl:duty [
-            odrl:action [
-                rdf:value tre:declareIntendedPurpose ;
-                odrl:refinement [
-                    odrl:leftOperand odrl:purpose ;
-                    odrl:operator odrl:isAnyOf ;
-                    odrl:rightOperand dpv:NonCommercialResearch ;
-                ] ;
-            ] ;
-        ] ;
-        odrl:duty [
-            odrl:action [
-                rdf:value tre:provideAccessPurpose ;
-                odrl:refinement [
-                    odrl:leftOperand schema:wordCount ;
-                    odrl:operator odrl:gteq ;
-                    odrl:rightOperand 10 ;
-                ] , [
-                    odrl:leftOperand schema:wordCount ;
-                    odrl:operator odrl:lteq ;
-                    odrl:rightOperand 150 ;
-                ] ;
-            ] ;
-        ] ;
-        odrl:duty [
-            odrl:action tre:acceptTerms ;
-            odrl:target <https://example.org/terms> ;
-        ] ;
+        odrl:assignee _:assignee-odissei-member ;
+        odrl:assignee _:assignee-affiliation-netherlands ;
+        odrl:assignee _:assignee-affiliation-employee-faculty ;
+        odrl:constraint _:constraint-elapsed-time ;
+        odrl:duty _:duty-attribution ;
+        odrl:duty _:duty-provide-ethical-approval ;
+        odrl:duty _:duty-declare-purpose-non-commercial ;
+        odrl:duty _:duty-provide-purpose ;
+        odrl:duty _:duty-accept-terms ;
         odrl:target <https://example.org/dataset> ;
     ] ;
-    odrl:profile <https://w3id.org/tre/vocabulary/v0> ;
     odrl:prohibition [
         odrl:action odrl:distribute ;
         odrl:assigner <https://example.org/provider> ;
         odrl:target <https://example.org/dataset> ;
     ] .
+
+# Refinement of the tre:analyse action: only inside SANE.
+_:action-analyse-in-sane
+    rdf:value tre:analyse ;
+    odrl:refinement [
+        odrl:leftOperand odrl:virtualLocation ;
+        odrl:operator odrl:eq ;
+        odrl:rightOperand <https://w3id.org/tre/instance/sane#SANE> ;
+    ] .
+
+# Refinement of the assignee: ODISSEI member.
+_:assignee-odissei-member
+    a odrl:PartyCollection ;
+    odrl:source <https://odissei-data.nl/> .
+
+# Refinement of the assignee: located in the Netherlands.
+_:assignee-affiliation-netherlands
+    a odrl:PartyCollection ;
+    odrl:refinement [
+        odrl:leftOperand odrl:spatial ;
+        odrl:operator odrl:isAnyOf ;
+        odrl:rightOperand loc:NL ;
+    ] .
+
+# Refinement of the assignee: employee or faculty affiliation.
+_:assignee-affiliation-employee-faculty
+    a odrl:PartyCollection ;
+    odrl:refinement [
+        odrl:leftOperand <urn:oid:1.3.6.1.4.1.5923.1.1.1.1> ;
+        odrl:operator odrl:isAnyOf ;
+        odrl:rightOperand "employee", "faculty" ;
+    ] .
+
+# Constraint on the permission: access expires after 3 months.
+_:constraint-elapsed-time
+    odrl:leftOperand odrl:elapsedTime ;
+    odrl:operator odrl:lteq ;
+    odrl:rightOperand "P3M"^^xsd:duration .
+
+# Duty: attribute the dataset.
+_:duty-attribution
+    odrl:action odrl:attribute ;
+    odrl:target <https://example.org/dataset> .
+
+# Duty: obtain ethical approval.
+_:duty-provide-ethical-approval
+    odrl:action duodrl:ProvideEthicalApproval .
+
+# Duty: declare intended purpose, restricted to non-commercial research.
+_:duty-declare-purpose-non-commercial
+    odrl:action [
+        rdf:value tre:declareIntendedPurpose ;
+        odrl:refinement [
+            odrl:leftOperand odrl:purpose ;
+            odrl:operator odrl:isAnyOf ;
+            odrl:rightOperand dpv:NonCommercialResearch ;
+        ] ;
+    ] .
+
+# Duty: provide access purpose, between 10 and 150 words.
+_:duty-provide-purpose
+    odrl:action [
+        rdf:value tre:provideAccessPurpose ;
+        odrl:refinement [
+            odrl:leftOperand schema:wordCount ;
+            odrl:operator odrl:gteq ;
+            odrl:rightOperand 10 ;
+        ] , [
+            odrl:leftOperand schema:wordCount ;
+            odrl:operator odrl:lteq ;
+            odrl:rightOperand 150 ;
+        ] ;
+    ] .
+
+# Duty: accept the terms of use.
+_:duty-accept-terms
+    odrl:action tre:acceptTerms ;
+    odrl:target <https://example.org/terms> .
