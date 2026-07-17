@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:dct="http://purl.org/dc/terms/"
+  xmlns:dpv="https://w3id.org/dpv#"
+  xmlns:odrl="http://www.w3.org/ns/odrl/2/"
+  xmlns:schema="https://schema.org/"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:tre="https://w3id.org/tre/vocabulary/v0#"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+>
+  <tre:TRE rdf:about="https://w3id.org/tre/instance/sane#Tinker">
+    <rdf:type rdf:resource="http://www.w3.org/ns/odrl/2/RightOperand"/>
+    <rdfs:subClassOf>
+      <tre:TRE rdf:about="https://w3id.org/tre/instance/sane#SANE">
+        <rdf:type rdf:resource="http://www.w3.org/ns/odrl/2/RightOperand"/>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/tre/instance/sane"/>
+        <rdfs:label>SANE</rdfs:label>
+        <schema:provider rdf:resource="https://surf.nl"/>
+        <dpv:hasLocation rdf:resource="https://w3id.org/dpv/loc#NL"/>
+        <dpv:hasDataProcessor rdf:resource="https://surf.nl"/>
+        <skos:definition xml:lang="en">SURF Secure Analysis Environment. A Trusted Research Environment (TRE) that allows analysis on a (confidential) dataset, without the data leaving the environment. The output is released after a check by the data provider.</skos:definition>
+        <skos:scopeNote xml:lang="en">Intended for use as the odrl:rightOperand of a Refinement/Constraint whose odrl:leftOperand is odrl:virtualLocation.</skos:scopeNote>
+        <schema:potentialAction rdf:resource="https://w3id.org/tre/vocabulary/v0#analyse"/>
+      </tre:TRE>
+    </rdfs:subClassOf>
+    <rdfs:isDefinedBy>
+      <foaf:Document rdf:about="https://w3id.org/tre/instance/sane">
+        <rdfs:label xml:lang="en">SANE Specification</rdfs:label>
+        <dct:description xml:lang="en">Specification of the SANE Trusted Research Environment, provided by SURF.</dct:description>
+        <dct:license rdf:resource="https://creativecommons.org/licenses/by/4.0/"/>
+        <dct:creator rdf:resource="https://surf.nl"/>
+        <schema:publisher rdf:resource="https://surf.nl"/>
+        <dct:contributor>Freek Dijkstra</dct:contributor>
+        <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-07-15</dct:created>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-07-17</dct:modified>
+        <dct:hasFormat rdf:resource="https://w3id.org/tre/instance/sane.ttl"/>
+        <dct:hasFormat rdf:resource="https://w3id.org/tre/instance/sane.jsonld"/>
+        <dct:hasFormat rdf:resource="https://w3id.org/tre/instance/sane.rdf"/>
+        <dct:hasFormat rdf:resource="https://w3id.org/tre/instance/sane.md"/>
+      </foaf:Document>
+    </rdfs:isDefinedBy>
+    <rdfs:label>Tinker SANE</rdfs:label>
+    <schema:provider rdf:resource="https://surf.nl"/>
+    <dpv:hasLocation rdf:resource="https://w3id.org/dpv/loc#NL"/>
+    <dpv:hasDataProcessor rdf:resource="https://surf.nl"/>
+    <skos:definition xml:lang="en">Remote desktop environment that provides tool to run an analysis on a (confidential) dataset. The environment does not have Internet access, and the result of the analysis is send to the data provider for verification.</skos:definition>
+    <skos:scopeNote xml:lang="en">Intended for use as the odrl:rightOperand of a Refinement/Constraint whose odrl:leftOperand is odrl:virtualLocation.</skos:scopeNote>
+    <schema:potentialAction rdf:resource="https://w3id.org/tre/vocabulary/v0#analyse"/>
+  </tre:TRE>
+  <tre:TREService rdf:about="https://w3id.org/tre/instance/sane#SRC">
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/tre/instance/sane"/>
+    <rdfs:label xml:lang="en">SURF Research Cloud</rdfs:label>
+    <schema:about rdf:resource="https://surfresearchcloud.nl/"/>
+    <schema:provider rdf:resource="https://surf.nl"/>
+    <dpv:hasJurisdiction rdf:resource="https://w3id.org/dpv/loc#NL"/>
+    <schema:serviceOutput rdf:resource="https://w3id.org/tre/instance/sane#SANE"/>
+    <skos:definition xml:lang="en">The SURF Research Cloud service, through which users can provision a SANE Trusted Research Environment.</skos:definition>
+    <skos:scopeNote xml:lang="en">Only use sane:SRC in the context of a tre:TREService. It is not intended as an overall description of the SURF Research Cloud service.</skos:scopeNote>
+    <skos:editorialNote xml:lang="en">A general RDF description of the SURF Research Cloud service does not yet exist, as of 2026-07-17.</skos:editorialNote>
+  </tre:TREService>
+  <tre:TRE rdf:about="https://w3id.org/tre/instance/sane#Blind">
+    <rdf:type rdf:resource="http://www.w3.org/ns/odrl/2/RightOperand"/>
+    <rdfs:subClassOf rdf:resource="https://w3id.org/tre/instance/sane#SANE"/>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/tre/instance/sane"/>
+    <rdfs:label>Blind SANE</rdfs:label>
+    <schema:provider rdf:resource="https://surf.nl"/>
+    <dpv:hasLocation rdf:resource="https://w3id.org/dpv/loc#NL"/>
+    <dpv:hasDataProcessor rdf:resource="https://surf.nl"/>
+    <skos:definition xml:lang="en">Job submission system that runs code on a (confidential) dataset. The environment does not have Internet access, and the result of the analysis is send to the data provider for verification.</skos:definition>
+    <skos:scopeNote xml:lang="en">Intended for use as the odrl:rightOperand of a Refinement/Constraint whose odrl:leftOperand is odrl:virtualLocation.</skos:scopeNote>
+    <schema:potentialAction rdf:resource="https://w3id.org/tre/vocabulary/v0#analyse"/>
+  </tre:TRE>
+</rdf:RDF>

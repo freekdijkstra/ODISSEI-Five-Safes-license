@@ -1,10 +1,76 @@
-@base <https://w3id.org/tre/instance/sane#> .
+@base <https://w3id.org/tre/instance/sane> .
 
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sane: <https://w3id.org/tre/instance/sane#> .
 @prefix dct: <http://purl.org/dc/terms/> .
+@prefix dpv: <https://w3id.org/dpv#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix loc: <https://w3id.org/dpv/loc#> .
+@prefix odrl: <http://www.w3.org/ns/odrl/2/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix tre: <https://w3id.org/tre/vocabulary/v0#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://w3id.org/tre/instance/sane#SANE>
-    a tre:TRE ;
+<https://w3id.org/tre/instance/sane>
+    a foaf:Document ;
+    rdfs:label "SANE Specification"@en ;
+    dct:description "Specification of the SANE Trusted Research Environment, provided by SURF."@en ;
+    dct:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dct:creator <https://surf.nl> ;
+    schema:publisher <https://surf.nl> ;
+    dct:contributor "Freek Dijkstra" ;
+    dct:created "2026-07-15"^^xsd:date ;
+    dct:modified "2026-07-17"^^xsd:date ;
+    dct:hasFormat
+        <https://w3id.org/tre/instance/sane.ttl> ,
+        <https://w3id.org/tre/instance/sane.jsonld> ,
+        <https://w3id.org/tre/instance/sane.rdf> ,
+        <https://w3id.org/tre/instance/sane.md> .
+
+sane:SRC
+    a tre:TREService ;
+    rdfs:isDefinedBy <https://w3id.org/tre/instance/sane> ;
+    rdfs:label "SURF Research Cloud"@en ;
+    schema:about <https://surfresearchcloud.nl/> ;
+    schema:provider <https://surf.nl> ;
+    dpv:hasJurisdiction loc:NL ;
+    schema:serviceOutput sane:SANE ;
+    skos:definition "The SURF Research Cloud service, through which users can provision a SANE Trusted Research Environment."@en ;
+    skos:scopeNote "Only use sane:SRC in the context of a tre:TREService. It is not intended as an overall description of the SURF Research Cloud service."@en ;
+    skos:editorialNote "A general RDF description of the SURF Research Cloud service does not yet exist, as of 2026-07-17."@en .
+
+sane:SANE
+    a tre:TRE, odrl:RightOperand ;
+    rdfs:isDefinedBy <https://w3id.org/tre/instance/sane> ;
     rdfs:label "SANE" ;
-    dct:description "SURF Secure Analysis Environment" .
+    schema:provider <https://surf.nl> ;
+    dpv:hasLocation loc:NL ;
+    dpv:hasDataProcessor <https://surf.nl> ;
+    skos:definition "SURF Secure Analysis Environment. A Trusted Research Environment (TRE) that allows analysis on a (confidential) dataset, without the data leaving the environment. The output is released after a check by the data provider."@en ;
+    skos:scopeNote "Intended for use as the odrl:rightOperand of a Refinement/Constraint whose odrl:leftOperand is odrl:virtualLocation."@en ;
+    schema:potentialAction tre:analyse .
+
+sane:Blind
+    a tre:TRE, odrl:RightOperand ;
+    rdfs:subClassOf sane:SANE ;
+    rdfs:isDefinedBy <https://w3id.org/tre/instance/sane> ;
+    rdfs:label "Blind SANE" ;
+    schema:provider <https://surf.nl> ;
+    dpv:hasLocation loc:NL ;
+    dpv:hasDataProcessor <https://surf.nl> ;
+    skos:definition "Job submission system that runs code on a (confidential) dataset. The environment does not have Internet access, and the result of the analysis is send to the data provider for verification."@en ;
+    skos:scopeNote "Intended for use as the odrl:rightOperand of a Refinement/Constraint whose odrl:leftOperand is odrl:virtualLocation."@en ;
+    schema:potentialAction tre:analyse .
+
+sane:Tinker
+    a tre:TRE, odrl:RightOperand ;
+    rdfs:subClassOf sane:SANE ;
+    rdfs:isDefinedBy <https://w3id.org/tre/instance/sane> ;
+    rdfs:label "Tinker SANE" ;
+    schema:provider <https://surf.nl> ;
+    dpv:hasLocation loc:NL ;
+    dpv:hasDataProcessor <https://surf.nl> ;
+    skos:definition "Remote desktop environment that provides tool to run an analysis on a (confidential) dataset. The environment does not have Internet access, and the result of the analysis is send to the data provider for verification."@en ;
+    skos:scopeNote "Intended for use as the odrl:rightOperand of a Refinement/Constraint whose odrl:leftOperand is odrl:virtualLocation."@en ;
+    schema:potentialAction tre:analyse .

@@ -1,0 +1,278 @@
+[
+  {
+    "@id": "https://w3id.org/tre/instance/sane",
+    "@type": [
+      "http://xmlns.com/foaf/0.1/Document"
+    ],
+    "http://purl.org/dc/terms/contributor": [
+      {
+        "@value": "Freek Dijkstra"
+      }
+    ],
+    "http://purl.org/dc/terms/created": [
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#date",
+        "@value": "2026-07-15"
+      }
+    ],
+    "http://purl.org/dc/terms/creator": [
+      {
+        "@id": "https://surf.nl"
+      }
+    ],
+    "http://purl.org/dc/terms/description": [
+      {
+        "@language": "en",
+        "@value": "Specification of the SANE Trusted Research Environment, provided by SURF."
+      }
+    ],
+    "http://purl.org/dc/terms/hasFormat": [
+      {
+        "@id": "https://w3id.org/tre/instance/sane.ttl"
+      },
+      {
+        "@id": "https://w3id.org/tre/instance/sane.jsonld"
+      },
+      {
+        "@id": "https://w3id.org/tre/instance/sane.rdf"
+      },
+      {
+        "@id": "https://w3id.org/tre/instance/sane.md"
+      }
+    ],
+    "http://purl.org/dc/terms/license": [
+      {
+        "@id": "https://creativecommons.org/licenses/by/4.0/"
+      }
+    ],
+    "http://purl.org/dc/terms/modified": [
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#date",
+        "@value": "2026-07-17"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "SANE Specification"
+      }
+    ],
+    "https://schema.org/publisher": [
+      {
+        "@id": "https://surf.nl"
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/tre/instance/sane#SANE",
+    "@type": [
+      "https://w3id.org/tre/vocabulary/v0#TRE",
+      "http://www.w3.org/ns/odrl/2/RightOperand"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "https://w3id.org/tre/instance/sane"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "SANE"
+      }
+    ],
+    "http://www.w3.org/2004/02/skos/core#definition": [
+      {
+        "@language": "en",
+        "@value": "SURF Secure Analysis Environment. A Trusted Research Environment (TRE) that allows analysis on a (confidential) dataset, without the data leaving the environment. The output is released after a check by the data provider."
+      }
+    ],
+    "http://www.w3.org/2004/02/skos/core#scopeNote": [
+      {
+        "@language": "en",
+        "@value": "Intended for use as the odrl:rightOperand of a Refinement/Constraint whose odrl:leftOperand is odrl:virtualLocation."
+      }
+    ],
+    "https://schema.org/potentialAction": [
+      {
+        "@id": "https://w3id.org/tre/vocabulary/v0#analyse"
+      }
+    ],
+    "https://schema.org/provider": [
+      {
+        "@id": "https://surf.nl"
+      }
+    ],
+    "https://w3id.org/dpv#hasDataProcessor": [
+      {
+        "@id": "https://surf.nl"
+      }
+    ],
+    "https://w3id.org/dpv#hasLocation": [
+      {
+        "@id": "https://w3id.org/dpv/loc#NL"
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/tre/instance/sane#SRC",
+    "@type": [
+      "https://w3id.org/tre/vocabulary/v0#TREService"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "https://w3id.org/tre/instance/sane"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "SURF Research Cloud"
+      }
+    ],
+    "http://www.w3.org/2004/02/skos/core#definition": [
+      {
+        "@language": "en",
+        "@value": "The SURF Research Cloud service, through which users can provision a SANE Trusted Research Environment."
+      }
+    ],
+    "http://www.w3.org/2004/02/skos/core#editorialNote": [
+      {
+        "@language": "en",
+        "@value": "A general RDF description of the SURF Research Cloud service does not yet exist, as of 2026-07-17."
+      }
+    ],
+    "http://www.w3.org/2004/02/skos/core#scopeNote": [
+      {
+        "@language": "en",
+        "@value": "Only use sane:SRC in the context of a tre:TREService. It is not intended as an overall description of the SURF Research Cloud service."
+      }
+    ],
+    "https://schema.org/about": [
+      {
+        "@id": "https://surfresearchcloud.nl/"
+      }
+    ],
+    "https://schema.org/provider": [
+      {
+        "@id": "https://surf.nl"
+      }
+    ],
+    "https://schema.org/serviceOutput": [
+      {
+        "@id": "https://w3id.org/tre/instance/sane#SANE"
+      }
+    ],
+    "https://w3id.org/dpv#hasJurisdiction": [
+      {
+        "@id": "https://w3id.org/dpv/loc#NL"
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/tre/instance/sane#Tinker",
+    "@type": [
+      "https://w3id.org/tre/vocabulary/v0#TRE",
+      "http://www.w3.org/ns/odrl/2/RightOperand"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "https://w3id.org/tre/instance/sane"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "Tinker SANE"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "https://w3id.org/tre/instance/sane#SANE"
+      }
+    ],
+    "http://www.w3.org/2004/02/skos/core#definition": [
+      {
+        "@language": "en",
+        "@value": "Remote desktop environment that provides tool to run an analysis on a (confidential) dataset. The environment does not have Internet access, and the result of the analysis is send to the data provider for verification."
+      }
+    ],
+    "http://www.w3.org/2004/02/skos/core#scopeNote": [
+      {
+        "@language": "en",
+        "@value": "Intended for use as the odrl:rightOperand of a Refinement/Constraint whose odrl:leftOperand is odrl:virtualLocation."
+      }
+    ],
+    "https://schema.org/potentialAction": [
+      {
+        "@id": "https://w3id.org/tre/vocabulary/v0#analyse"
+      }
+    ],
+    "https://schema.org/provider": [
+      {
+        "@id": "https://surf.nl"
+      }
+    ],
+    "https://w3id.org/dpv#hasDataProcessor": [
+      {
+        "@id": "https://surf.nl"
+      }
+    ],
+    "https://w3id.org/dpv#hasLocation": [
+      {
+        "@id": "https://w3id.org/dpv/loc#NL"
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/tre/instance/sane#Blind",
+    "@type": [
+      "https://w3id.org/tre/vocabulary/v0#TRE",
+      "http://www.w3.org/ns/odrl/2/RightOperand"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "https://w3id.org/tre/instance/sane"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "Blind SANE"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "https://w3id.org/tre/instance/sane#SANE"
+      }
+    ],
+    "http://www.w3.org/2004/02/skos/core#definition": [
+      {
+        "@language": "en",
+        "@value": "Job submission system that runs code on a (confidential) dataset. The environment does not have Internet access, and the result of the analysis is send to the data provider for verification."
+      }
+    ],
+    "http://www.w3.org/2004/02/skos/core#scopeNote": [
+      {
+        "@language": "en",
+        "@value": "Intended for use as the odrl:rightOperand of a Refinement/Constraint whose odrl:leftOperand is odrl:virtualLocation."
+      }
+    ],
+    "https://schema.org/potentialAction": [
+      {
+        "@id": "https://w3id.org/tre/vocabulary/v0#analyse"
+      }
+    ],
+    "https://schema.org/provider": [
+      {
+        "@id": "https://surf.nl"
+      }
+    ],
+    "https://w3id.org/dpv#hasDataProcessor": [
+      {
+        "@id": "https://surf.nl"
+      }
+    ],
+    "https://w3id.org/dpv#hasLocation": [
+      {
+        "@id": "https://w3id.org/dpv/loc#NL"
+      }
+    ]
+  }
+]
