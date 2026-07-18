@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:odrl="http://www.w3.org/ns/odrl/2/"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:dct="http://purl.org/dc/terms/"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:schema="https://schema.org/"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+>
+  <rdf:Description rdf:about="https://w3id.org/tre/license/duty-provide-ethical-approval">
+    <odrl:action rdf:resource="https://w3id.org/duodrl#ProvideEthicalApproval"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/tre/license/duty-provide-purpose">
+    <odrl:action>
+      <rdf:Description rdf:nodeID="n765f915f068542118931adaf1fa04286b8">
+        <rdf:value rdf:resource="https://w3id.org/tre/vocabulary/v0#provideAccessPurpose"/>
+        <odrl:refinement>
+          <rdf:Description rdf:nodeID="n765f915f068542118931adaf1fa04286b9">
+            <odrl:leftOperand rdf:resource="https://schema.org/wordCount"/>
+            <odrl:operator rdf:resource="http://www.w3.org/ns/odrl/2/gteq"/>
+            <odrl:rightOperand rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">10</odrl:rightOperand>
+          </rdf:Description>
+        </odrl:refinement>
+        <odrl:refinement>
+          <rdf:Description rdf:nodeID="n765f915f068542118931adaf1fa04286b10">
+            <odrl:leftOperand rdf:resource="https://schema.org/wordCount"/>
+            <odrl:operator rdf:resource="http://www.w3.org/ns/odrl/2/lteq"/>
+            <odrl:rightOperand rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">150</odrl:rightOperand>
+          </rdf:Description>
+        </odrl:refinement>
+      </rdf:Description>
+    </odrl:action>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/tre/license/action-analyse-in-sane">
+    <rdf:value rdf:resource="https://w3id.org/tre/vocabulary/v0#analyse"/>
+    <odrl:refinement>
+      <rdf:Description rdf:nodeID="n765f915f068542118931adaf1fa04286b3">
+        <odrl:leftOperand rdf:resource="http://www.w3.org/ns/odrl/2/virtualLocation"/>
+        <odrl:operator rdf:resource="http://www.w3.org/ns/odrl/2/eq"/>
+        <odrl:rightOperand rdf:resource="https://w3id.org/tre/instance/sane#SANE"/>
+      </rdf:Description>
+    </odrl:refinement>
+  </rdf:Description>
+  <odrl:Offer rdf:about="https://doi.org/10.5281/zenodo.18456775">
+    <rdfs:label xml:lang="en">ODISSEI Five Safes license</rdfs:label>
+    <dct:description xml:lang="en">A standardised set of conditions for accessing and using sensitive datasets in a Trusted Research Environment (TRE) such as SANE, according to the Five Safes principles.</dct:description>
+    <schema:version>v1.01</schema:version>
+    <dct:isVersionOf rdf:resource="https://doi.org/10.5281/zenodo.18456774"/>
+    <dct:hasFormat>
+      <foaf:Document rdf:about="https://w3id.org/tre/license/five_safes_license">
+        <rdfs:label xml:lang="en">ODISSEI Five Safes license</rdfs:label>
+        <dct:description xml:lang="en">ODRL version of a standardised set of conditions for accessing and using sensitive datasets in a Trusted Research Environment (TRE) such as SANE, according to the Five Safes principles.</dct:description>
+        <schema:version>1.1.0</schema:version>
+        <owl:versionInfo>1.1.0</owl:versionInfo>
+        <owl:versionIRI rdf:resource="https://w3id.org/tre/license/five_safes_license_v1.1"/>
+        <dct:isFormatOf rdf:resource="https://doi.org/10.5281/zenodo.18456775"/>
+        <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-02-25</dct:created>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-07-17</dct:modified>
+        <skos:scopeNote xml:lang="en">To refer to version 1 of the Five Safes License, use the Zenodo identifier, also for ODRL parsing.</skos:scopeNote>
+        <dct:creator rdf:resource="https://surf.nl"/>
+        <dct:creator rdf:resource="https://odissei-data.nl"/>
+        <dct:contributor>Freek Dijkstra</dct:contributor>
+        <dct:contributor>Lucas van der Meer</dct:contributor>
+        <dct:license rdf:resource="https://creativecommons.org/licenses/by/4.0/"/>
+      </foaf:Document>
+    </dct:hasFormat>
+    <skos:scopeNote xml:lang="en">To refer to version 1 of the Five Safes License, use this identifier, also for ODRL parsing.</skos:scopeNote>
+    <odrl:profile rdf:resource="https://w3id.org/tre/vocabulary/v0"/>
+    <odrl:permission>
+      <rdf:Description rdf:nodeID="n765f915f068542118931adaf1fa04286b1">
+        <odrl:action rdf:resource="https://w3id.org/tre/license/action-analyse-in-sane"/>
+        <odrl:assignee rdf:resource="https://w3id.org/tre/license/assignee-odissei-member"/>
+        <odrl:assignee rdf:resource="https://w3id.org/tre/license/assignee-located-europe-economic-area"/>
+        <odrl:assignee rdf:resource="https://w3id.org/tre/license/assignee-affiliation-employee-faculty"/>
+        <odrl:constraint rdf:resource="https://w3id.org/tre/license/constraint-elapsed-time"/>
+        <odrl:duty rdf:resource="https://w3id.org/tre/license/duty-attribution"/>
+        <odrl:duty rdf:resource="https://w3id.org/tre/license/duty-declare-purpose-non-commercial"/>
+        <odrl:duty rdf:resource="https://w3id.org/tre/license/duty-accept-terms"/>
+      </rdf:Description>
+    </odrl:permission>
+    <odrl:prohibition>
+      <rdf:Description rdf:nodeID="n765f915f068542118931adaf1fa04286b2">
+        <odrl:action rdf:resource="http://www.w3.org/ns/odrl/2/distribute"/>
+      </rdf:Description>
+    </odrl:prohibition>
+  </odrl:Offer>
+  <rdf:Description rdf:about="https://w3id.org/tre/license/duty-accept-terms">
+    <odrl:action rdf:resource="https://w3id.org/tre/vocabulary/v0#acceptTerms"/>
+  </rdf:Description>
+  <odrl:PartyCollection rdf:about="https://w3id.org/tre/license/assignee-located-europe-economic-area">
+    <odrl:refinement>
+      <rdf:Description rdf:nodeID="n765f915f068542118931adaf1fa04286b4">
+        <odrl:leftOperand rdf:resource="http://www.w3.org/ns/odrl/2/spatial"/>
+        <odrl:operator rdf:resource="http://www.w3.org/ns/odrl/2/isAnyOf"/>
+        <odrl:rightOperand rdf:resource="https://w3id.org/dpv/loc#EEA"/>
+      </rdf:Description>
+    </odrl:refinement>
+  </odrl:PartyCollection>
+  <rdf:Description rdf:about="https://w3id.org/tre/license/constraint-elapsed-time">
+    <odrl:leftOperand rdf:resource="http://www.w3.org/ns/odrl/2/elapsedTime"/>
+    <odrl:operator rdf:resource="http://www.w3.org/ns/odrl/2/lteq"/>
+    <odrl:rightOperand rdf:datatype="http://www.w3.org/2001/XMLSchema#duration">P3M</odrl:rightOperand>
+  </rdf:Description>
+  <odrl:PartyCollection rdf:about="https://w3id.org/tre/license/assignee-odissei-member">
+    <odrl:source rdf:resource="https://odissei-data.nl/"/>
+  </odrl:PartyCollection>
+  <odrl:PartyCollection rdf:about="https://w3id.org/tre/license/assignee-affiliation-employee-faculty">
+    <odrl:refinement>
+      <rdf:Description rdf:nodeID="n765f915f068542118931adaf1fa04286b5">
+        <odrl:leftOperand rdf:resource="urn:oid:1.3.6.1.4.1.5923.1.1.1.1"/>
+        <odrl:operator rdf:resource="http://www.w3.org/ns/odrl/2/isAnyOf"/>
+        <odrl:rightOperand>employee</odrl:rightOperand>
+        <odrl:rightOperand>faculty</odrl:rightOperand>
+      </rdf:Description>
+    </odrl:refinement>
+  </odrl:PartyCollection>
+  <rdf:Description rdf:about="https://w3id.org/tre/license/duty-declare-purpose-non-commercial">
+    <odrl:action>
+      <rdf:Description rdf:nodeID="n765f915f068542118931adaf1fa04286b6">
+        <rdf:value rdf:resource="https://w3id.org/tre/vocabulary/v0#declareIntendedPurpose"/>
+        <odrl:refinement>
+          <rdf:Description rdf:nodeID="n765f915f068542118931adaf1fa04286b7">
+            <odrl:leftOperand rdf:resource="http://www.w3.org/ns/odrl/2/purpose"/>
+            <odrl:operator rdf:resource="http://www.w3.org/ns/odrl/2/isAnyOf"/>
+            <odrl:rightOperand rdf:resource="https://w3id.org/dpv#NonCommercialResearch"/>
+          </rdf:Description>
+        </odrl:refinement>
+      </rdf:Description>
+    </odrl:action>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/tre/license/duty-attribution">
+    <odrl:action rdf:resource="http://www.w3.org/ns/odrl/2/attribute"/>
+  </rdf:Description>
+</rdf:RDF>

@@ -15,7 +15,7 @@
         odrl:action _:action-analyse-in-sane ;
         odrl:assigner <https://example.org/provider> ;
         odrl:assignee _:assignee-odissei-member ;
-        odrl:assignee _:assignee-affiliation-netherlands ;
+        odrl:assignee _:assignee-located-netherlands ;
         odrl:assignee _:assignee-affiliation-employee-faculty ;
         odrl:constraint _:constraint-elapsed-time ;
         odrl:duty _:duty-attribution ;
@@ -46,7 +46,7 @@ _:assignee-odissei-member
     odrl:source <https://odissei-data.nl/> .
 
 # Refinement of the assignee: located in the Netherlands.
-_:assignee-affiliation-netherlands
+_:assignee-located-netherlands
     a odrl:PartyCollection ;
     odrl:refinement [
         odrl:leftOperand odrl:spatial ;

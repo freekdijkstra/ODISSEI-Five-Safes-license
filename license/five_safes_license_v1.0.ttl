@@ -1,0 +1,84 @@
+@base <https://w3id.org/tre/license/> .
+
+@prefix odrl: <http://www.w3.org/ns/odrl/2/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dpv: <https://w3id.org/dpv#> .
+@prefix schema: <https://schema.org/> .
+@prefix tre: <https://w3id.org/tre/vocabulary/v0#> .
+@prefix sane: <https://w3id.org/tre/sane#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://doi.org/10.5281/zenodo.18456775>
+    a odrl:Offer ;
+    schema:version "1.0.1" ;
+    dct:isVersionOf <https://doi.org/10.5281/zenodo.18456774> ;
+    # rdfs:seeAlso <https://zenodo.org/records/18456775> ;
+    rdfs:seeAlso <https://github.com/odissei-data/ODISSEI-Five-Safes-license/> ;
+    rdfs:seeAlso <https://raw.githubusercontent.com/odissei-data/ODISSEI-Five-Safes-license/refs/heads/main/license/five_safes_license.ttl> ;
+    odrl:profile <https://w3id.org/tre/vocabulary/v0#> ;
+    odrl:permission [
+        # TODO: add separate odrl:action to access (staat wellicht in AOC profile?)
+        # odrl:action [
+        #     rdf:value         tre:analyse ;
+        # ] ;
+        odrl:action [
+            rdf:value         tre:analyse ;
+            # odrl:assigner     tre:Controller ;
+            # odrl:assignee     tre:Researcher ;
+            odrl:refinement [
+                odrl:leftOperand  odrl:virtualLocation ;
+                odrl:operator     odrl:eq ;
+                odrl:rightOperand sane:SANE ;
+            ]
+        ] ;
+        odrl:constraint [
+            odrl:leftOperand  odrl:purpose ;
+            odrl:operator     odrl:eq ;
+            odrl:rightOperand dpv:NonCommercialResearch ;
+            # Allow research at e.g. governmental organisations; 
+            # So it is not restricted to dpv:AcademicResearch
+        ] ;
+        # TODO: person must be employed by institute, not a student.
+        # odrl:constraint [
+        #     odrl:leftOperand  odrl:assignee ;
+        #     odrl:operator     employed_by ;
+        #     odrl:rightOperand [
+        #         a ResearchInstitute
+        #         location Netherlands (or EER?)
+        #     ] ;
+        # ] ;
+        odrl:constraint [
+            odrl:leftOperand  odrl:elapsedTime ;
+            odrl:operator     odrl:lteq ;
+            odrl:rightOperand "P6M"^^xsd:duration
+            # "P6M" is the ISO 8601 description for "6 month period"
+            # The actual requirement is "no longer than necessary".
+            # For practical reasons, it is here defined as
+            # "at most 6 months since the policy became active"
+        ] ;
+        # odrl:duty [
+        #     odrl:action ex:notifyChange ;
+        # ] ;
+        # odrl:duty [
+        #     odrl:action [
+        #         rdf:value         tre:submitOutputForReview ;
+        #         odrl:assignee     tre:Researcher ;
+        #     ] .
+        # ] ;
+        # odrl:duty [
+        #     odrl:action [
+        #         rdf:value         tre:reviewSubmittedOutput ;
+        #         odrl:assignee     tre:Controller ;
+        #     ] .
+        # ] .
+    ] ;
+    # odrl:prohibition [
+    #     odrl:action <download>
+    # ] ;
+    odrl:prohibition [
+        odrl:action odrl:distribute
+    ] .
+

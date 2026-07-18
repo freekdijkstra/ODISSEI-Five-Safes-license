@@ -56,8 +56,6 @@
 
 # Refinement of the tre:analyse action: only inside SANE.
 fsl:action-analyse-in-sane
-    rdfs:label "Analyse only inside SANE"@en ;
-    skos:definition "The Researcher may analyse the dataset, but only inside the SANE Trusted Research Environment."@en ;
     rdf:value tre:analyse ;
     odrl:refinement [
         odrl:leftOperand odrl:virtualLocation ;
@@ -68,15 +66,11 @@ fsl:action-analyse-in-sane
 # Refinement of the assignee: ODISSEI member.
 fsl:assignee-odissei-member
     a odrl:PartyCollection ;
-    rdfs:label "ODISSEI member"@en ;
-    skos:definition "The Researcher's organisation must be a member of ODISSEI."@en ;
     odrl:source <https://odissei-data.nl/> .
 
 # Refinement of the assignee: located in the European Economic Area.
 fsl:assignee-located-europe-economic-area
     a odrl:PartyCollection ;
-    rdfs:label "Located in the EEA"@en ;
-    skos:definition "The Researcher must be located in the European Economic Area."@en ;
     odrl:refinement [
         odrl:leftOperand odrl:spatial ;
         odrl:operator odrl:isAnyOf ;
@@ -86,8 +80,6 @@ fsl:assignee-located-europe-economic-area
 # Refinement of the assignee: employee or faculty affiliation.
 fsl:assignee-affiliation-employee-faculty
     a odrl:PartyCollection ;
-    rdfs:label "Employee or faculty affiliation"@en ;
-    skos:definition "The Researcher's eduPersonAffiliation must be either \"employee\" or \"faculty\"."@en ;
     odrl:refinement [
         odrl:leftOperand <urn:oid:1.3.6.1.4.1.5923.1.1.1.1> ;
         odrl:operator odrl:isAnyOf ;
@@ -96,29 +88,21 @@ fsl:assignee-affiliation-employee-faculty
 
 # Constraint on the permission: access expires after 3 months.
 fsl:constraint-elapsed-time
-    rdfs:label "Access expires after 3 months"@en ;
-    skos:definition "Access to the dataset expires after an elapsed time of at most 3 months (can be extended)."@en ;
     odrl:leftOperand odrl:elapsedTime ;
     odrl:operator odrl:lteq ;
     odrl:rightOperand "P3M"^^xsd:duration .
 
 # Duty: attribute the dataset.
 fsl:duty-attribution
-    rdfs:label "Attribute the dataset"@en ;
-    skos:definition "The Researcher must refer to the dataset when publishing results."@en ;
     odrl:action odrl:attribute .
 
 # Duty: obtain ethical approval.
 # Unused by Five Safes License
 fsl:duty-provide-ethical-approval
-    rdfs:label "Provide Ethical Approval"@en ;
-    skos:definition "The Researcher must show proof that the research project has been approved by an ethical board."@en ;
     odrl:action duodrl:ProvideEthicalApproval .
 
 # Duty: declare intended purpose, restricted to non-commercial research.
 fsl:duty-declare-purpose-non-commercial
-    rdfs:label "Declare non-commercial research purpose"@en ;
-    skos:definition "The Researcher must declare that the intended purpose of access is strictly for non-commercial research."@en ;
     odrl:action [
         rdf:value tre:declareIntendedPurpose ;
         odrl:refinement [
@@ -131,8 +115,6 @@ fsl:duty-declare-purpose-non-commercial
 # Duty: provide access purpose, between 10 and 150 words.
 # Unused by Five Safes License
 fsl:duty-provide-purpose
-    rdfs:label "Declare non-commercial research purpose"@en ;
-    skos:definition "The Researcher must declare that the intended purpose of access is strictly for non-commercial research."@en ;
     odrl:action [
         rdf:value tre:provideAccessPurpose ;
         odrl:refinement [
@@ -148,6 +130,4 @@ fsl:duty-provide-purpose
 
 # Duty: accept the terms of use.
 fsl:duty-accept-terms
-    rdfs:label "Accept terms of use"@en ;
-    skos:definition "The Researcher must accept the terms of use before being granted access."@en ;
     odrl:action tre:acceptTerms .
